@@ -661,14 +661,14 @@ const TITLES={
     title:"Natural Language → SCPI",org:"Tektronix · AI Incubator",kind:"Internship",
     when:"Jun 2026 – Present",metric:"IN PROGRESS",badge:"Now",badgeOn:true,progress:62,
     art:ART.scope(),
-    blurb:"Test and measurement instruments speak SCPI, a terse command language nobody wants to write by hand. This turns what an engineer actually means into the commands the instrument accepts.",
+    blurb:"Test and measurement instruments speak SCPI, a terse command language nobody wants to write by hand. This reads the instrument\u0027s own programmer manual, stores what it finds as queryable triples, and turns a plain-English request into the command string the hardware executes.",
     bullets:[
-      "Built a natural language control layer with the AI Incubator team that converts engineer-written intents into the SCPI commands test and measurement instruments execute.",
-      "Designed a de-lexicalized intent matcher that strips instrument-specific values before lookup, so one template covers many phrasings instead of a hard-coded command per request.",
-      "Extended the existing MCP server with a lookup layer that resolves an intent against whatever instrument is connected, addressed by IP at run time, so no instrument needs handling of its own."
+      "Designed an intent-to-SCPI translator with the AI Incubator team that converts a plain-English measurement request into the command string an instrument executes, so engineers no longer write SCPI by hand.",
+      "Replaced instrument-specific values such as channel numbers and thresholds with placeholders before matching a request to a command template, then substituted them back into the generated SCPI, so one template handles every variation of a request instead of one template per phrasing.",
+      "Built an MCP server that ingests instrument programmer's manuals, extracts the command reference into subject-predicate-object triples, and writes them to a SQLite database the server queries at request time; lookups resolve against whichever instrument is connected, addressed by IP at run time."
     ],
     stats:[["Role","SWE Intern"],["Team","AI Incubator"],["Location","Beaverton, OR"],["Protocol","SCPI over IP"]],
-    tech:["Python","MCP","SCPI","LLM Intent Parsing","De-lexicalization"]
+    tech:["Python","MCP","SCPI","SQLite","Triple Store","De-lexicalization"]
   },
   lakehouse:{
     title:"NYC TLC Lakehouse",org:"Personal · Data Engineering",kind:"Project",
@@ -683,7 +683,8 @@ const TITLES={
       "Modelled taxi zones as a Type 2 dimension so facts join on the pickup date falling inside a validity range, keeping historical reports stable. 33 tests, no network required."
     ],
     stats:[["Trips loaded","12,620,251"],["Fares","$349.4M"],["Quarantined","448,816"],["Tests","33 passing"],["Per partition","~4 s"]],
-    tech:["Apache Airflow 3","DuckDB","Parquet","Python","SQL","pytest","SCD Type 2"]
+    tech:["Apache Airflow 3","DuckDB","Parquet","Python","SQL","pytest","SCD Type 2"],
+    links:[["GitHub","https://github.com/Nick-154/nyc-tlc-lakehouse"]]
   },
   detection:{
     title:"Real-Time Object Detection",org:"Computer Vision",kind:"Project",
