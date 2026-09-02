@@ -438,7 +438,7 @@ footer{
       <span>MS Computer Science</span><i class="sep"></i>
       <span>Oregon State</span><i class="sep"></i>
       <span>GPA 3.63</span><i class="sep"></i>
-      <span>Grad Mar 2027</span>
+      <span>Grad Jun 2027</span>
     </div>
     <p class="hero-copy">
       Currently building natural-language control for test &amp; measurement instruments with the
@@ -663,9 +663,9 @@ const TITLES={
     art:ART.scope(),
     blurb:"Test and measurement instruments speak SCPI, a terse command language nobody wants to write by hand. This turns what an engineer actually means into the commands the instrument accepts.",
     bullets:[
-      "Working with the AI Incubator team on natural language control for test and measurement instruments, converting human-written intents into the SCPI commands the instruments accept.",
-      "Applying de-lexicalization to strip instrument-specific values out of an intent before matching it, so a single template covers many phrasings instead of hard-coding a command per request.",
-      "Built a high-level lookup layer on top of the existing MCP server so one intent resolves to the right command for whatever instrument is connected, addressed by its IP at run time, with no per-instrument handling."
+      "Built a natural language control layer with the AI Incubator team that converts engineer-written intents into the SCPI commands test and measurement instruments execute.",
+      "Designed a de-lexicalized intent matcher that strips instrument-specific values before lookup, so one template covers many phrasings instead of a hard-coded command per request.",
+      "Extended the existing MCP server with a lookup layer that resolves an intent against whatever instrument is connected, addressed by IP at run time, so no instrument needs handling of its own."
     ],
     stats:[["Role","SWE Intern"],["Team","AI Incubator"],["Location","Beaverton, OR"],["Protocol","SCPI over IP"]],
     tech:["Python","MCP","SCPI","LLM Intent Parsing","De-lexicalization"]
@@ -731,7 +731,7 @@ const TITLES={
     art:ART.dash(),
     blurb:"Business Intelligence Specialist in Hyderabad: the reporting layer clients actually looked at, and the pipelines that kept it fed.",
     bullets:[
-      "Built 7+ interactive QuickSight dashboards for client reporting, covering standing business metrics and ad-hoc analytics requests.",
+      "Shipped 7+ interactive QuickSight dashboards for client reporting, covering standing business metrics and ad-hoc analytics requests.",
       "Built API-driven ETL pipelines moving terabytes of data a day between Postgres and Amazon Redshift, and cut query execution time by 40% with indexing and partitioning."
     ],
     stats:[["Dashboards","7+"],["Daily volume","Terabytes"],["Query time","−40%"],["Duration","11 months"]],
@@ -756,11 +756,11 @@ const TITLES={
     art:ART.scope(),
     blurb:"Master's student in Computer Science at Oregon State, currently interning with the AI Incubator team at Tektronix. Background split between data engineering at scale and applied machine learning, with a preference for systems whose correctness you can actually demonstrate.",
     bullets:[
-      "MS Computer Science, Oregon State University — GPA 3.63/4.0, Sept 2025 to Mar 2027.",
+      "MS Computer Science, Oregon State University — GPA 3.63/4.0, Sept 2025 to Jun 2027.",
       "BTech Computer Science, Symbiosis Institute of Technology, Pune — Sept 2020 to May 2023.",
       "Coursework: Cyber Security Practicum I & II, Machine Learning, Deep Learning, Analysis of Algorithms."
     ],
-    stats:[["GPA","3.63 / 4.0"],["Graduating","March 2027"],["Based in","Corvallis, OR"],["Publication","IEEE, 2023"]],
+    stats:[["GPA","3.63 / 4.0"],["Graduating","June 2027"],["Based in","Corvallis, OR"],["Publication","IEEE, 2023"]],
     tech:["Python","C/C++","JavaScript","SQL","Docker","Airflow","DuckDB","AWS","PostgreSQL","Redshift","PyTorch","TensorFlow","ONNX","TensorRT","CUDA","MCP","Redis","Node.js"],
     links:[["Email","mailto:tattikon@oregonstate.edu"],["LinkedIn","https://www.linkedin.com/in/nikhil-tattikota/"],["GitHub","https://github.com/Nick-154"]]
   }
