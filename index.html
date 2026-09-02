@@ -661,26 +661,26 @@ const TITLES={
     title:"Natural Language → SCPI",org:"Tektronix · AI Incubator",kind:"Internship",
     when:"Jun 2026 – Present",metric:"IN PROGRESS",badge:"Now",badgeOn:true,progress:62,
     art:ART.scope(),
-    blurb:"Test and measurement instruments speak SCPI, a terse command language nobody wants to write by hand. This reads the instrument\u0027s own programmer manual, stores what it finds as queryable triples, and turns a plain-English request into the command string the hardware executes.",
+    blurb:"Test and measurement instruments speak SCPI, a terse command language nobody wants to write by hand. This reads the instrument\u0027s own programmer manual, stores what it finds as queryable triples, and turns what an engineer asks for into the command string the hardware executes.",
     bullets:[
-      "Designed an intent-to-SCPI translator with the AI Incubator team that converts a plain-English measurement request into the command string an instrument executes, so engineers no longer write SCPI by hand.",
-      "Replaced instrument-specific values such as channel numbers and thresholds with placeholders before matching a request to a command template, then substituted them back into the generated SCPI, so one template handles every variation of a request instead of one template per phrasing.",
-      "Built an MCP server that ingests instrument programmer's manuals, extracts the command reference into subject-predicate-object triples, and writes them to a SQLite database the server queries at request time; lookups resolve against whichever instrument is connected, addressed by IP at run time."
+      "Built an intent-to-SCPI engine with the AI Incubator team so an engineer can describe a measurement in their own words and get back the command the instrument runs.",
+      "Swapped values like channel numbers and thresholds for placeholders before matching a request against a command template, then put them back into the SCPI it generates, so one template covers every way of asking for the same measurement.",
+      "Built an MCP server that reads instrument programmer's manuals, pulls the command reference into subject-predicate-object triples, and stores them in a SQLite database it queries on each request, matching whichever instrument is connected by its IP."
     ],
     stats:[["Role","SWE Intern"],["Team","AI Incubator"],["Location","Beaverton, OR"],["Protocol","SCPI over IP"]],
     tech:["Python","MCP","SCPI","SQLite","Triple Store","De-lexicalization"]
   },
   lakehouse:{
-    title:"NYC TLC Lakehouse",org:"Personal · Data Engineering",kind:"Project",
+    title:"NYC Taxi Data Lakehouse",org:"Personal · Data Engineering",kind:"Project",
     when:"Sept 2026",metric:"12.6M rows",badge:"New",badgeOn:true,
     art:ART.lake(),
     blurb:"An incremental pipeline over NYC yellow-taxi records, built around the three things that actually break pipelines: re-running a partition, spotting bad data, and keeping history when the source changes underneath you.",
     bullets:[
-      "Orchestrated bronze → silver → gold with Airflow 3 over DuckDB and partitioned Parquet; loaded 12.6M trips across four months in roughly four seconds per partition.",
-      "Made every write partition-scoped and idempotent: atomic os.replace on landing, delete-then-insert inside a transaction on load. Re-running January five times produced byte-identical totals.",
-      "Quarantined 448,816 unusable rows with an attributed reason each, so a 3.2% reject rate decomposes into 258,073 zero-distance trips and 179,813 negative amounts instead of one unactionable number.",
-      "Split the quality gate into hard and soft thresholds; a hard breach stops the partition before it reaches gold. Found 65 trips dated outside the month their own file claims to cover, some from 2009.",
-      "Modelled taxi zones as a Type 2 dimension so facts join on the pickup date falling inside a validity range, keeping historical reports stable. 33 tests, no network required."
+      "Built on Airflow 3, moving NYC taxi records through bronze, silver and gold layers into DuckDB and partitioned Parquet. 12.6M trips across four months, about four seconds a month.",
+      "Every write only touches the month it belongs to. Files land with an atomic rename, and the warehouse load deletes then inserts inside a transaction. Running January five times gave identical totals every time.",
+      "448,816 rows were unusable, and each one is quarantined with the rule it broke. That turns a flat 3.2% reject rate into 258,073 zero-distance trips and 179,813 negative amounts, which you can actually do something about.",
+      "The quality gate has hard and soft thresholds, and a hard breach stops the month before it reaches gold. It caught 65 trips dated outside the month their own file claims to cover, some of them from 2009.",
+      "Taxi zones are versioned rather than overwritten, so a report for March still matches what March actually looked like. 33 tests, none of them needing network access."
     ],
     stats:[["Trips loaded","12,620,251"],["Fares","$349.4M"],["Quarantined","448,816"],["Tests","33 passing"],["Per partition","~4 s"]],
     tech:["Apache Airflow 3","DuckDB","Parquet","Python","SQL","pytest","SCD Type 2"],
